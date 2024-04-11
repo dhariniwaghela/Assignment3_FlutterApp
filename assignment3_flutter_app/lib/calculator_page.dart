@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: use_key_in_widget_constructors, library_private_types_in_public_api, prefer_const_constructors, sort_child_properties_last
 
 import 'package:flutter/material.dart';
 import 'package:math_expressions/math_expressions.dart';
@@ -21,10 +21,18 @@ class _CalculatorWidgetState extends State<Calculator> {
       body: Padding(
         padding: EdgeInsets.all(20.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             TextField(
+              style: TextStyle(fontSize: 20.0),
+              textAlign: TextAlign.center,
               decoration: InputDecoration(
-                labelText: 'Enter a mathematical expression',
+                hintText: 'Enter a mathematical expression',
+                hintStyle: TextStyle(color: Colors.grey),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                contentPadding: EdgeInsets.all(20.0),
               ),
               onChanged: (value) {
                 setState(() {
@@ -37,12 +45,19 @@ class _CalculatorWidgetState extends State<Calculator> {
               onPressed: () {
                 _evaluateExpression();
               },
-              child: Text('Calculate'),
+              child: Text(
+                'Calculate',
+                style: TextStyle(fontSize: 20.0),
+              ),
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.all(20.0),
+              ),
             ),
             SizedBox(height: 20.0),
             Text(
               'Result: $_result',
-              style: TextStyle(fontSize: 20.0),
+              style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
             ),
           ],
         ),
