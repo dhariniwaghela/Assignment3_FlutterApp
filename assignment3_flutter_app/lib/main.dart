@@ -12,7 +12,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Assignment 3 Flutter App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         appBarTheme: const AppBarTheme(
@@ -31,7 +30,92 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: GreetingsPage(),
+      home: HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+
+  String imageUrl = 'https://picsum.photos/300/400';
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Home Page'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'Welcome',
+              style: Theme.of(context).textTheme.headline1,
+            ),
+            Text(
+              'to your Lifestyle App',
+              style: Theme.of(context).textTheme.headline1,
+            ),
+            const SizedBox(height: 20),
+            Image.network(
+              imageUrl,
+              height: 200,
+              width: 200,
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => GreetingsPage()),
+                );
+              },
+              child: Text('Get your daily Greetings'),
+            ),
+            const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => NotesPage()),
+                );
+              },
+              child: Text('Update your daily notes'),
+            ),
+            const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Calculator()),
+                );
+              },
+              child: Text('Calculate your expenses'),
+            ),
+            const SizedBox(height: 10),
+            Text(
+              'Team Members',
+              style: TextStyle(color: Colors.black, fontSize: 12),
+            ),
+            const SizedBox(height: 10),
+            Text(
+              'Dharini',
+              style: TextStyle(color: Colors.black, fontSize: 12),
+            ),
+            const SizedBox(height: 5),
+            Text(
+              'Nancy',
+              style: TextStyle(color: Colors.black, fontSize: 12),
+            ),
+            const SizedBox(height: 5),
+            Text(
+              'Ramkumar',
+              style: TextStyle(color: Colors.black, fontSize: 12),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -79,38 +163,7 @@ class _GreetingsPageState extends State<GreetingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Assinment 3 Flutter App'),
-        actions: [
-          PopupMenuButton<String>(
-            onSelected: (String choice) {
-              if (choice == 'Home') {
-                // Navigate to home page (optional)
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => MyApp()),
-                );
-              } else if (choice == 'Calculator') {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Calculator()),
-                );
-              } else if (choice == 'Notes') {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => NotesPage()),
-                );
-              }
-            },
-            itemBuilder: (BuildContext context) {
-              return ['Home', 'Calculator', 'Notes'].map((String choice) {
-                return PopupMenuItem<String>(
-                  value: choice,
-                  child: Text(choice),
-                );
-              }).toList();
-            },
-          ),
-        ],
+        title: const Text('Greetings Page'),
       ),
       body: Center(
         child: Column(
