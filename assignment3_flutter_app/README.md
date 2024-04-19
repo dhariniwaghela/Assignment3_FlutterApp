@@ -1,5 +1,7 @@
 # assignment3_flutter_app
 
+![Screenshot_20240418_233403-imageonline co-merged](https://github.com/dhariniwaghela/Assignment3_FlutterApp/assets/45775602/391b76dc-c82b-41a1-af6f-90972f47f6e8)
+
 A new Flutter project.
 
 ## Getting Started
